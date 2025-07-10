@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Portfolio Details</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Poppins" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Mobile nav toggle -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="assets/img/profile-img1.jpeg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Sohin Ali</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="index.html#home" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="index.html#Project" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Project</span></a></li>
+          <!-- <li><a href="index.html#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li> -->
+          <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Breadcrumbs -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Portfolio Details</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Portfolio Details</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Details -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center" id="project-images">
+                <!-- Dynamic images will be loaded here -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong>: <span id="category"></span></li>
+                <li><strong>Client</strong>: <span id="client"></span></li>
+                <li><strong>Technologies Used</strong>: <span id="Technologies_Used"></span></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2 id="project-title"></h2>
+              <p id="project-description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>iPortfolio</span></strong>
+      </div>
+      <div class="credits">
+        Designed by <a href="#">Sohin Ali</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    const projects = {
+      1: {
+        title: "Ecommerce Book Store Website",
+        description: "Designed and developed a fully responsive and dynamic Ecommerce Book Store using PHP, MySQL, AJAX, and Bootstrap.\nThe platform includes complete user authentication (registration & login/logout), product catalog, shopping cart, and secure order processing.\n\nThe admin panel provides robust control over inventory, allowing administrators to add, update, delete, and manage books and categories, track orders, and view transaction histories.\n\nReal-time cart updates and smooth user interactions are implemented using AJAX and JavaScript for better UX.\n\nFeatures include:\n- Role-based access: Separate dashboards for users and admin\n- CRUD operations for books, categories, and orders\n- Fully responsive UI using Bootstrap",
+        category: "Web Development",
+        client: "Freelance",
+        Technologies_Used: "PHP, HTML5, CSS3, JavaScript, AJAX, Bootstrap 5, MySQL",
+        images: [
+          "assets/img/portfolio/portfolio-1.png",
+          "assets/img/books/b1.png",
+          "assets/img/books/b2.png",
+          "assets/img/books/b3.png",
+          "assets/img/books/b4.png",
+          "assets/img/books/b5.png",
+          "assets/img/books/b6.png",
+          "assets/img/books/b7.png"
+        ]
+      },
+
+      2: {
+  title: "Clothing Ecommerce Store",
+  description: "Built a complete, responsive online clothing store supporting male and female clothing categories using PHP, MySQL, AJAX, JavaScript, HTML5, and CSS3.\n\nImplemented full customer functionality including product browsing, session-based shopping cart, user authentication (login/register), order placement, and live order status tracking via 'My Orders' section.\n\nThe system includes real-time cart updates using AJAX and dynamic interaction enhancements for a smooth user experience.\n\nRegistered users receive order confirmation via email and mobile number (SMS/email integration).\n\nThe admin panel allows full management of categories, products, users, and orders:\n- Add, update, delete categories and products\n- Update order statuses (e.g., Pending, Processing, Shipped, Delivered)\n- View and manage registered user information\n\nFeatures include:\n- Role-based access: Customers and Admins\n- Secure order processing and session management\n- AJAX-powered dynamic interactions\n- Fully responsive front-end with enhanced UX",
+  category: "Web Development",
+  client: "Freelance",
+  Technologies_Used: "PHP, HTML5, CSS3, JavaScript, AJAX, Bootstrap 5, MySQL",
+  images: [
+    "assets/img/clothes/c1.png",
+    "assets/img/clothes/c2.png",
+    "assets/img/clothes/c3.png",
+    "assets/img/clothes/c4.png",
+    "assets/img/clothes/c5.png",
+    "assets/img/clothes/c6.png",
+    "assets/img/clothes/c7.png",
+    "assets/img/clothes/c8.png",
+    "assets/img/clothes/c9.png",
+    "assets/img/clothes/c10.png"
+  ]
+},
+
+      3: {
+  title: "Employee Management System",
+  description: "Developed a dynamic and responsive Employee Management System using Laravel and MySQL.\n\nThe system includes a secure admin login panel where administrators can manage departments—add, update, or delete them. Once a department is created, it becomes selectable in the staff registration form dynamically via the `<select>` dropdown.\n\nAdmin can register staff members by assigning them to departments and filling in their details including name, email, contact number, address, joining date, and profile photo. Staff records can be updated, deleted, and listed in a searchable/filterable table view.\n\nThe application supports login/logout functionality, role-based access, and validations for secure data management.\n\nKey Features:\n- Admin authentication and dashboard\n- Dynamic department management\n- Staff registration with department linkage\n- CRUD operations for departments and employees\n- Laravel validation and file upload handling\n- Role-based login/logout functionality",
+  category: "Web Development",
+  Technologies_Used: "Laravel, PHP, MySQL, HTML5, CSS3, Bootstrap 5, JavaScript",
+  images: [
+    "assets/img/ems/em1.png",
+    "assets/img/ems/em2.png",
+    "assets/img/ems/em3.png",
+    "assets/img/ems/em4.png",
+    "assets/img/ems/em5.png"
+  ]
+},
+  4: {
+  title: "Job Portal Web Application",
+  description: "Developed a fully functional job portal using Laravel, PHP, MySQL, HTML5, CSS3, JavaScript, and Bootstrap 5.\n\nThe platform supports multi-role authentication for Admin, Employer, and Jobseeker, each with their own dynamic dashboard.\n\nEmployers can post jobs, manage listings, and view applications submitted by jobseekers. Jobseekers can browse jobs, apply by uploading a resume and cover letter, and track application status via their dashboard.\n\nAdmins have full control over user management, job post approvals, and application monitoring, ensuring platform integrity and data consistency.\n\nKey Features:\n- Role-based login and dashboards (Admin, Employer, Jobseeker)\n- Job posting and management by employers\n- Resume and cover letter upload by jobseekers\n- Admin control for user approval, job moderation, and application oversight\n- Eloquent ORM for managing database relationships\n- Clean, responsive UI with validation and session handling",
+  category: "Web Development",
+  client: "Sohin Freelance",
+  Technologies_Used: "Laravel, PHP, MySQL, HTML5, CSS3, JavaScript, Bootstrap 5",
+ images: [
+  "assets/img/jobportal/jp1.png",
+  "assets/img/jobportal/jp2.png",
+  "assets/img/jobportal/jp3.png",
+  "assets/img/jobportal/jp4.png",
+  "assets/img/jobportal/jp5.png",
+  "assets/img/jobportal/jp6.png",
+  "assets/img/jobportal/jp7.png",
+  "assets/img/jobportal/jp8.png",
+  "assets/img/jobportal/jp9.png",
+  "assets/img/jobportal/jp10.png",
+  "assets/img/jobportal/jp11.png",
+  "assets/img/jobportal/jp12.png",
+  "assets/img/jobportal/jp13.png",
+  "assets/img/jobportal/jp14.png",
+  "assets/img/jobportal/jp15.png"
+]
+
+},
+  5:{
+  title: "Student Management System",
+  description: "Created a dynamic and responsive Student Management System using PHP, MySQL, AJAX, JavaScript, HTML5, and CSS3.\n\nThe system includes a registration and login system for students with authentication based on username and password. After login, students can view their profile and are allowed to update only limited fields like contact number and address — ensuring controlled access.\n\nAn admin panel provides complete control over the student database. The admin can view all registered students, update full student details, or delete records as required.\n\nThe interface is designed to be user-friendly and responsive, with AJAX used to enhance real-time data operations without full page reloads.\n\nKey Features:\n- Role-based login (Student and Admin)\n- Student registration with username-password login\n- Student profile with limited edit rights\n- Admin panel to view, update, and delete student records\n- Form validation and session handling\n- Responsive UI with real-time updates using AJAX",
+  category: "Web Development",
+  client: "Sohin Freelance",
+  Technologies_Used: "PHP, MySQL, HTML5, CSS3, JavaScript, AJAX, Bootstrap 5",
+  images: [
+    "assets/img/studentmgmt/sm1.png",
+    "assets/img/studentmgmt/sm2.png",
+    "assets/img/studentmgmt/sm3.png",
+    "assets/img/studentmgmt/sm4.png",
+    "assets/img/studentmgmt/sm5.png",
+    "assets/img/studentmgmt/sm6.png",
+    "assets/img/studentmgmt/sm7.png",
+    "assets/img/studentmgmt/sm8.png",
+    "assets/img/studentmgmt/sm9.png"
+  ]
+}
+
+
+
+
+
+    };
+
+    function getIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
+
+    function loadProject() {
+      const id = getIdFromUrl();
+      const project = projects[id];
+
+      if (!project) return;
+
+      document.getElementById("project-title").innerText = project.title;
+      document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
+      document.getElementById("category").innerText = project.category;
+      document.getElementById("client").innerText = project.client;
+      document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
+
+      const imageContainer = document.getElementById("project-images");
+      imageContainer.innerHTML = "";
+      project.images.forEach((img) => {
+        const div = document.createElement("div");
+        div.classList.add("swiper-slide");
+        div.innerHTML = `<img src="${img}" alt="">`;
+        imageContainer.appendChild(div);
+      });
+
+      setTimeout(() => {
+        new Swiper(".portfolio-details-slider", {
+          speed: 400,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            type: "bullets",
+            clickable: true,
+          }
+        });
+      }, 200);
+    }
+
+    window.addEventListener("DOMContentLoaded", loadProject);
+  </script>
+</body>
+</html>

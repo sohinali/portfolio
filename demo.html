@@ -8,9 +8,6 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Poppins" rel="stylesheet">
@@ -96,15 +93,12 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-8">
-           <div class="portfolio-details-slider swiper">
+            <div class="portfolio-details-slider swiper">
               <div class="swiper-wrapper align-items-center" id="project-images">
-                <!-- Images will be inserted dynamically here -->
+                <!-- Dynamic images will be loaded here -->
               </div>
-
-              <!-- Pagination must be INSIDE swiper container -->
               <div class="swiper-pagination"></div>
             </div>
-
           </div>
 
           <div class="col-lg-4">
@@ -256,56 +250,50 @@
 
     };
 
-  
- 
-  function getIdFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
-  }
+    function getIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
 
-  function loadProject() {
-    const id = getIdFromUrl();
-    const project = projects[id];
-    if (!project) return;
+    function loadProject() {
+      const id = getIdFromUrl();
+      const project = projects[id];
 
-    // Set content
-    document.getElementById("project-title").innerText = project.title;
-    document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
-    document.getElementById("category").innerText = project.category;
-    document.getElementById("client").innerText = project.client;
-    document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
+      if (!project) return;
 
-    // Load images
-    const imageContainer = document.getElementById("project-images");
-    imageContainer.innerHTML = "";
-    project.images.forEach((img) => {
-      const div = document.createElement("div");
-      div.classList.add("swiper-slide");
-      div.innerHTML = `<img src="${img}" alt="" style="width: 100%; height: auto;">`;
-      imageContainer.appendChild(div);
-    });
+      document.getElementById("project-title").innerText = project.title;
+      document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
+      document.getElementById("category").innerText = project.category;
+      document.getElementById("client").innerText = project.client;
+      document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
 
-    // Wait for DOM update
-    setTimeout(() => {
-      new Swiper(".portfolio-details-slider", {
-        speed: 400,
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          type: "bullets",
-          clickable: true
-        },
-        observer: true,
-        observeParents: true
+      const imageContainer = document.getElementById("project-images");
+      imageContainer.innerHTML = "";
+      project.images.forEach((img) => {
+        const div = document.createElement("div");
+        div.classList.add("swiper-slide");
+        div.innerHTML = `<img src="${img}" alt="">`;
+        imageContainer.appendChild(div);
       });
-    }, 200);
-  }
 
-  window.addEventListener("DOMContentLoaded", loadProject);
-</script>
+      setTimeout(() => {
+        new Swiper(".portfolio-details-slider", {
+          speed: 400,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            type: "bullets",
+            clickable: true,
+          }
+        });
+      }, 200);
+    }
+
+    window.addEventListener("DOMContentLoaded", loadProject);
+  </script>
 </body>
 </html>

@@ -675,6 +675,11 @@ section {
   padding: 0;
   font-size: 15px;
 }
+.portfolio-details-slider .swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 .portfolio-details .portfolio-info ul li+li {
   margin-top: 10px;

@@ -253,50 +253,65 @@
 
     };
 
-    function getIdFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("id");
-    }
+  
+  function getIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id");
+  }
 
-    function loadProject() {
-      const id = getIdFromUrl();
-      const project = projects[id];
+  let swiperInstance = null; // track swiper so we can destroy if needed
 
-      if (!project) return;
+  function initSwiper() {
+    if (swiperInstance) swiperInstance.destroy(true, true); // destroy previous instance
 
-      document.getElementById("project-title").innerText = project.title;
-      document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
-      document.getElementById("category").innerText = project.category;
-      document.getElementById("client").innerText = project.client;
-      document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
+    swiperInstance = new Swiper(".portfolio-details-slider", {
+      speed: 400,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false, // autoplay should not stop on swipe
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true,
+      },
+      observer: true,
+      observeParents: true,
+    });
 
-      const imageContainer = document.getElementById("project-images");
-      imageContainer.innerHTML = "";
-      project.images.forEach((img) => {
-        const div = document.createElement("div");
-        div.classList.add("swiper-slide");
-        div.innerHTML = `<img src="${img}" alt="">`;
-        imageContainer.appendChild(div);
-      });
+    swiperInstance.update(); // ensure pagination updates after dynamic content
+  }
 
-      setTimeout(() => {
-        new Swiper(".portfolio-details-slider", {
-          speed: 400,
-          loop: true,
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-            clickable: true,
-          }
-        });
-      }, 200);
-    }
+  function loadProject() {
+    const id = getIdFromUrl();
+    const project = projects[id];
+    if (!project) return;
 
-    window.addEventListener("DOMContentLoaded", loadProject);
-  </script>
+    // Set project content
+    document.getElementById("project-title").innerText = project.title;
+    document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
+    document.getElementById("category").innerText = project.category;
+    document.getElementById("client").innerText = project.client;
+    document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
+
+    // Load images dynamically
+    const imageContainer = document.getElementById("project-images");
+    imageContainer.innerHTML = "";
+    project.images.forEach((img) => {
+      const div = document.createElement("div");
+      div.classList.add("swiper-slide");
+      div.innerHTML = `<img src="${img}" alt="" style="width: 100%; height: auto;">`;
+      imageContainer.appendChild(div);
+    });
+
+    // Wait a moment to ensure DOM is ready
+    setTimeout(() => {
+      initSwiper(); // properly init swiper with dynamic content
+    }, 100);
+  }
+
+  window.addEventListener("DOMContentLoaded", loadProject);
+</script>
 </body>
 </html>

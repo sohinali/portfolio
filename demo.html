@@ -97,6 +97,8 @@
               <div class="swiper-wrapper align-items-center" id="project-images">
                 <!-- Dynamic images will be loaded here -->
               </div>
+                <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
@@ -244,56 +246,51 @@
   ]
 }
 
-
-
-
-
     };
+  window.addEventListener("DOMContentLoaded", () => {
+    const id = new URLSearchParams(window.location.search).get("id");
+    const project = projects[id];
 
-    function getIdFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("id");
-    }
+    if (!project) return;
 
-    function loadProject() {
-      const id = getIdFromUrl();
-      const project = projects[id];
+    // Populate project details
+    document.getElementById("project-title").innerText = project.title;
+    document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
+    document.getElementById("category").innerText = project.category;
+    document.getElementById("client").innerText = project.client;
+    document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
 
-      if (!project) return;
+    const imageContainer = document.getElementById("project-images");
+    imageContainer.innerHTML = ""; // clear previous content
 
-      document.getElementById("project-title").innerText = project.title;
-      document.getElementById("project-description").innerHTML = project.description.replace(/\n/g, "<br>");
-      document.getElementById("category").innerText = project.category;
-      document.getElementById("client").innerText = project.client;
-      document.getElementById("Technologies_Used").innerText = project.Technologies_Used;
+    project.images.forEach((img) => {
+      const div = document.createElement("div");
+      div.classList.add("swiper-slide");
+      div.innerHTML = `<img src="${img}" alt="">`;
+      imageContainer.appendChild(div);
+    });
 
-      const imageContainer = document.getElementById("project-images");
-      imageContainer.innerHTML = "";
-      project.images.forEach((img) => {
-        const div = document.createElement("div");
-        div.classList.add("swiper-slide");
-        div.innerHTML = `<img src="${img}" alt="">`;
-        imageContainer.appendChild(div);
+    // Ensure Swiper is initialized AFTER DOM update
+    setTimeout(() => {
+      new Swiper(".portfolio-details-slider", {
+        speed: 800,
+        loop: true,
+        autoplay: {
+          delay: 3500, // timing you prefer
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
       });
-
-      setTimeout(() => {
-        new Swiper(".portfolio-details-slider", {
-          speed: 400,
-          loop: true,
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            type: "bullets",
-            clickable: true,
-          }
-        });
-      }, 200);
-    }
-
-    window.addEventListener("DOMContentLoaded", loadProject);
-  </script>
+    }, 100); // short delay ensures DOM is ready
+  });
+</script>
 </body>
 </html>
